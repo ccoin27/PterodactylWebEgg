@@ -1,7 +1,7 @@
 const express = require('express');
 const path = require('path');
 const app = express();
-const port = process.env?.PORT;
+const port = PORT_PLACEHOLDER;
 
 if (!port) {
   return console.log(`Порт не найден, замените его вручную в server.js\nНайти порт можно в блоке "адрес"`);
