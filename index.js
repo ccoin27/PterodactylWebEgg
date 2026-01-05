@@ -1,10 +1,24 @@
+4️⃣ Чтение YAML в Node.js
+const fs = require('fs');
+const yaml = require('js-yaml');
 const express = require('express');
 const path = require('path');
+
 const app = express();
-const port = PORT_PLACEHOLDER_INDIVIDUAL;
+
+let config;
+try {
+  config = yaml.load(fs.readFileSync('./config.yml', 'utf8'));
+} catch (e) {
+  console.error('Ошибка чтения config.yml:', e);
+  process.exit(1);
+}
+
+const port = config?.server?.port;
 
 if (!port) {
-  return console.log(`Порт не найден, замените его вручную в server.js\nНайти порт можно в блоке "адрес"`);
+  console.log(`Порт не найден, замените его вручную в config.yml\nНайти порт можно в блоке "адрес"`);
+  process.exit(1);
 }
 
 const webrootPath = path.join(__dirname, 'webroot');
