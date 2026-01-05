@@ -1,4 +1,3 @@
-4️⃣ Чтение YAML в Node.js
 const fs = require('fs');
 const yaml = require('js-yaml');
 const express = require('express');
