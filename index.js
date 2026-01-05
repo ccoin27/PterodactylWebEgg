@@ -11,7 +11,7 @@ const webrootPath = path.join(__dirname, 'webroot');
 
 app.use(express.static(webrootPath));
 
-app.get('*', (req, res) => {
+app.get('/', (req, res) => {
   res.sendFile(path.join(webrootPath, 'index.html'));
 });
 
